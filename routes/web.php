@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProcessController;
+use App\Http\Controllers\ValueController;
+use App\Http\Controllers\VariableController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resources([
+    'process' => ProcessController::class,
+    'value' => ValueController::class,
+    'variable' => VariableController::class,
+]);

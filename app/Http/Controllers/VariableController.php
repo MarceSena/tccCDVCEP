@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Process;
+use App\Models\Variable;
 use Illuminate\Http\Request;
 
-class ProcessController extends Controller
+class VariableController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ProcessController extends Controller
      */
     public function index()
     {
-        return view('process.index');
+        //
     }
 
     /**
@@ -41,10 +41,10 @@ class ProcessController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Process  $process
+     * @param  \App\Models\Variable  $variable
      * @return \Illuminate\Http\Response
      */
-    public function show(Process $process)
+    public function show(Variable $variable)
     {
         //
     }
@@ -52,10 +52,10 @@ class ProcessController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Process  $process
+     * @param  \App\Models\Variable  $variable
      * @return \Illuminate\Http\Response
      */
-    public function edit(Process $process)
+    public function edit(Variable $variable)
     {
         //
     }
@@ -64,10 +64,10 @@ class ProcessController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Process  $process
+     * @param  \App\Models\Variable  $variable
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Process $process)
+    public function update(Request $request, Variable $variable)
     {
         //
     }
@@ -75,10 +75,10 @@ class ProcessController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Process  $process
+     * @param  \App\Models\Variable  $variable
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Process $process)
+    public function destroy(Variable $variable)
     {
         //
     }
