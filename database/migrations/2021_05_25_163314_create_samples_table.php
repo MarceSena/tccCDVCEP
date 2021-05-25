@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProcessesTable extends Migration
+class CreateSamplesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateProcessesTable extends Migration
      */
     public function up()
     {
-        Schema::create('processes', function (Blueprint $table) {
+        Schema::create('samples', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('obs');
-            $table->rememberToken();
+            $table->unsignedBiginteger('process_id')->constrained('processes')->onUpdate('cascade')->onDelete('cascade');           
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateProcessesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('processes');
+        Schema::dropIfExists('samples');
     }
 }

@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\ValueController;
-use App\Http\Controllers\VariableController;
+use App\Http\Controllers\SampleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +22,5 @@ Route::get('/', function () {
 Route::resources([
     'process' => ProcessController::class,
     'value' => ValueController::class,
-    'variable' => VariableController::class,
+    'sample' => SampleController::class,
 ]);

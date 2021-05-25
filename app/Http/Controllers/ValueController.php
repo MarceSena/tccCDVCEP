@@ -4,9 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Value;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ValueController extends Controller
 {
+    
+    private $objValue;
+
+
+    public function __construct(){
+        $this->objValue = new Value();
+      
+
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +25,8 @@ class ValueController extends Controller
      */
     public function index()
     {
-        //
+        $response = Http::get("http://www.randomnumberapi.com/api/v1.0/random?min=100&max=1000&count=5");
+        return $response->json();
     }
 
     /**
