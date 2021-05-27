@@ -2,11 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Variable;
+use App\Models\ProcessValue;
 use Illuminate\Http\Request;
 
-class VariableController extends Controller
+use Illuminate\Support\Facades\Http;
+
+class ProcessValueController extends Controller
 {
+    
+    private $objValue;
+
+
+    public function __construct(){
+        $this->objValue = new ProcessValue();
+      
+
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -35,16 +47,22 @@ class VariableController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $response = Http::get("http://www.randomnumberapi.com/api/v1.0/random?min=100&max=1000&count=1");
+        
+        $value = ProcessValue::create([
+            'sample_id' =>$request->input('sample_id'),
+            'process_value' =>$response->json(0)
+        ]);
+        return  redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Variable  $variable
+     * @param  \App\Models\ProcessValue  $processValue
      * @return \Illuminate\Http\Response
      */
-    public function show(Variable $variable)
+    public function show(ProcessValue $processValue)
     {
         //
     }
@@ -52,10 +70,10 @@ class VariableController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Variable  $variable
+     * @param  \App\Models\ProcessValue  $processValue
      * @return \Illuminate\Http\Response
      */
-    public function edit(Variable $variable)
+    public function edit(ProcessValue $processValue)
     {
         //
     }
@@ -64,10 +82,10 @@ class VariableController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Variable  $variable
+     * @param  \App\Models\ProcessValue  $processValue
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Variable $variable)
+    public function update(Request $request, ProcessValue $processValue)
     {
         //
     }
@@ -75,10 +93,10 @@ class VariableController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Variable  $variable
+     * @param  \App\Models\ProcessValue  $processValue
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Variable $variable)
+    public function destroy(ProcessValue $processValue)
     {
         //
     }

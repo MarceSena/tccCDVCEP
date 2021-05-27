@@ -4,18 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 use App\Models\Sample;
 
-class Value extends Model
+class ProcessValue extends Model
 {
-    protected $table = 'values';
+    protected $table = 'process_values';
     protected $fillable = [
-       'value'
+       'process_value', 'sample_id'
    ];
    
    public function sample()
    {
        return $this->belongsTo(Sample::class);
    }
-
 }

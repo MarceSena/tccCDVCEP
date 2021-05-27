@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Process;
-use App\Models\Value;
+use App\Models\ProcessValue;
 
 class Sample extends Model
 {
@@ -22,7 +22,7 @@ class Sample extends Model
     
     public function value()
     {
-        return $this->hasMany(Value::class);
+        return $this->hasMany(ProcessValue::class);
     }
 
 }

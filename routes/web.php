@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProcessController;
-use App\Http\Controllers\ValueController;
 use App\Http\Controllers\SampleController;
+use App\Http\Controllers\ProcessValueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +21,6 @@ Route::get('/', function () {
 
 Route::resources([
     'process' => ProcessController::class,
-    'value' => ValueController::class,
+    'value' => ProcessValueController::class,
     'sample' => SampleController::class,
 ]);

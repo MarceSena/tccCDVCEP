@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Process;
 use App\Models\Sample;
-use App\Models\Value;
+use App\Models\ProcessValue;
 
 use Illuminate\Http\Request;
 
@@ -20,7 +20,7 @@ class ProcessController extends Controller
     public function __construct(){
         $this->objProcess = new Process();
         $this->objSample = new Sample();
-        $this->objValue = new Value();
+        $this->objValue = new ProcessValue();
       
     }
 

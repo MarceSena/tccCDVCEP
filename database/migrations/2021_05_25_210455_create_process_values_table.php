@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateValuesTable extends Migration
+class CreateProcessValuesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateValuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('values', function (Blueprint $table) {
+        Schema::create('process_values', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBiginteger('sample_id')->constrained('samples')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('process_value');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateValuesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('values');
+        Schema::dropIfExists('process_values');
     }
 }
