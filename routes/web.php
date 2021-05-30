@@ -1,8 +1,13 @@
 <?php
 
+
+
 use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\SampleController;
 use App\Http\Controllers\ProcessValueController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +20,16 @@ use App\Http\Controllers\ProcessValueController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [LoginController::class,  'login']);
+Route::post('authenticate', [LoginController::class , 'authenticate'])->name('authenticate'); ;
+Route::post('teste', [LoginController::class , 'teste']);
+
+
 
 Route::resources([
     'process' => ProcessController::class,
     'value' => ProcessValueController::class,
     'sample' => SampleController::class,
+    'user' => UserController::class
 ]);

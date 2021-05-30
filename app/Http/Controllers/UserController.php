@@ -2,28 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Process;
-use App\Models\Sample;
-use App\Models\ProcessValue;
-
+use App\Models\User;
 use Illuminate\Http\Request;
+use Hash;
 
-class ProcessController extends Controller
+class UserController extends Controller
 {
 
-
-    private $objProcess;
-    private $objSample;
-    private $objValue;
-
+    private $user;
 
     public function __construct(){
-        $this->objProcess = new Process();
-        $this->objSample = new Sample();
-        $this->objValue = new ProcessValue();
+        $this->objUser = new User();
+
 
     }
-
 
     /**
      * Display a listing of the resource.
@@ -32,8 +24,8 @@ class ProcessController extends Controller
      */
     public function index()
     {
-        $process = $this->objProcess->All();
-        return view('process/index', compact('process'));
+        $user = $this->objUser->All();
+        return view('user/index', compact('user'));
     }
 
     /**
@@ -43,7 +35,7 @@ class ProcessController extends Controller
      */
     public function create()
     {
-        return view('process/create');
+        return view('user/create');
     }
 
     /**
@@ -54,32 +46,30 @@ class ProcessController extends Controller
      */
     public function store(Request $request)
     {
-        $process = Process::create($request->all());
-        //$client->relAdresses()->create($input);
-        return redirect('process');
+        return User::create([
+            'username' => $request['username'],
+            'password' => hash::make($request['password'])
+          ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Process  $process
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $process = $this->objProcess->find($id);
-        $sample = $this->objSample->find($id);
-        $value = $this->objValue->find($id);
-        return view('process/show', compact('process', 'sample', 'value'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Process  $process
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Process $process)
+    public function edit($id)
     {
         //
     }
@@ -88,10 +78,10 @@ class ProcessController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Process  $process
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Process $process)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -99,10 +89,10 @@ class ProcessController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Process  $process
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Process $process)
+    public function destroy($id)
     {
         //
     }
